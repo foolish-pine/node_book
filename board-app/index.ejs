@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Board</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h1>掲示板</h1>
+  <div>
+    <p>＊メッセージは最大10個まで保管されます。</p>
+    <form method="POST" action="/">
+      <p><span id="id"></span></p>
+      <input type="hidden" id="id_input" name="id" value="">
+      <input type="text" name="msg">
+      <input type="submit" value="送信">
+    </form>
+    <table style="width: 85%;">
+      <% for(let i in data) { %>
+      <%- include("data_item", {val:data[i]}) %>
+      <% } %>
+    </table>
+  </div>
+  <script>
+    const init = () => {
+      const id = localStorage.getItem("id");
+      if (id === null) {
+        location.href = "./login";
+      }
+      document.querySelector("#id").textContent = "ID: " + id;
+      document.querySelector("#id_input").value = id;
+    }
+    init();
+  </script>
+</body>
+
+</html>

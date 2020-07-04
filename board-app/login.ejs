@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOGIN</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <h1>LOGIN</h1>
+  <div>
+    <p>あなたのログインネームを入力してください。</p>
+    <input type="text" id="id_input">
+    <button onclick="setId()">送信</button>
+  </div>
+  <script>
+    const setId = () => {
+      const id = document.querySelector("#id_input").value;
+      localStorage.setItem("id", id)
+      location.href = "/"
+    }
+  </script>
+</body>
+
+</html>
